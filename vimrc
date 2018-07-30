@@ -14,22 +14,23 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 " Let NeoBundle manage NeoBundle
 " Required:
 NeoBundleFetch 'Shougo/neobundle.vim'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'christoomey/vim-tmux-navigator'
+NeoBundle 'hecal3/vim-leader-guide'
 NeoBundle 'jeffkreeftmeijer/vim-numbertoggle'
-NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'jistr/vim-nerdtree-tabs'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'majutsushi/tagbar'
+NeoBundle 'mkitt/tabline.vim'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'tmhedberg/SimpylFold'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'valloric/youcompleteme'
-NeoBundle 'tmhedberg/SimpylFold'
-NeoBundle 'hecal3/vim-leader-guide'
-NeoBundle 'bling/vim-airline'
-NeoBundle 'xuyuanp/nerdtree-git-plugin'
-NeoBundle 'christoomey/vim-tmux-navigator'
-NeoBundle 'mkitt/tabline.vim'
 NeoBundle 'xuhdev/singlecompile'
-NeoBundle 'christoomey/vim-tmux-navigator'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'jiangmiao/auto-pairs'
-NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'xuyuanp/nerdtree-git-plugin'
+NeoBundle 'mhinz/vim-startify'
 " My Bundles here:
 "
 " Refer to |:NeoBundle-examples|.
@@ -45,7 +46,6 @@ filetype plugin indent on
 NeoBundleCheck
 syntax on
 set number relativenumber
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
