@@ -31,6 +31,9 @@ NeoBundle 'valloric/youcompleteme'
 NeoBundle 'xuhdev/singlecompile'
 NeoBundle 'xuyuanp/nerdtree-git-plugin'
 NeoBundle 'mhinz/vim-startify'
+NeoBundle 'dylanaraps/wal.vim'
+NeoBundle 'liuchengxu/vim-which-key'
+NeoBundle 'nathanaelkane/vim-indent-guides'
 " My Bundles here:
 "
 " Refer to |:NeoBundle-examples|.
@@ -39,10 +42,7 @@ NeoBundle 'mhinz/vim-startify'
 call neobundle#end()
 
 " Required:
-filetype plugin indent on
-
 " If there are uninstalled bundles found on startup,
-" this will conveniently prompt you to install them.
 NeoBundleCheck
 syntax on
 set number relativenumber
@@ -50,6 +50,13 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:indent_guides_enable_on_vim_startup = 1
+set tabstop=4
+colorscheme wal
+
+" Encoding
+set encoding=utf-8
+set fileencoding=utf-8
 
 "split navigations
 nnoremap <C-J> <C-W><C-J>
@@ -63,21 +70,27 @@ nnoremap <C-Right> :tabnext<CR>
 nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 
-" Enable folding
+"Move lines/selection arround
+nnoremap <C-,> :m .+1<CR>==
+nnoremap <C-.> :m .-2<CR>==
 set foldmethod=indent
+" Enable folding
 set foldlevel=99
 
-" Enable folding with the spacebar
-nnoremap <space> za
-
+"Leaders
 let mapleader = " "
 map <leader>n :NERDTreeTabsToggle<enter>
 map <leader>t :TagbarToggle<enter>
+
 "Quick Exits
-map <leader>a :wq!<enter>
+map <leader>a :wq!<enter>"Quit and save
 map <leader>q :q!<enter>
 map <leader>s :w!<enter>
+map <leader>ci :IndentGuidesToggle<enter>
+
 "SCCompile
 nmap <C-F9> :SCCompile<cr>
-nmap <C-F10> :SCCompileRun<cr>"
+nmap <C-F10> :SCCompileRun<cr>
 
+" Which key
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>

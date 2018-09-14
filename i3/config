@@ -165,10 +165,11 @@ bindsym $mod+r mode "resize"
 for_window [class="^.*"] border pixel 1
 gaps inner 15 
 gaps outer 15
-exec feh --bg-scale ~/Downloads/wall.png
+exec feh --bg-scale ~/wall.png
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 exec polybar example
+exec wal -R
 exec setxkbmap eu
 
 # scratchpad s
@@ -187,9 +188,6 @@ bindsym F4 exec --no-startup-id amixer -q sset Master 3%-
 bindsym F5 exec --no-startup-id amixer -q sset Master 3%+
 bindsym F6 exec --no-startup-id light -U 10
 bindsym F7 exec --no-startup-id light -A 10
-
-
-
-
-
+bindsym F8 gaps inner current set 0; gaps outer current set 0
+bindsym F9 gaps inner current set 15; gaps outer current set 15
 bindsym $mod+b exec --no-startup-id ~/dotfiles/i3/lock.sh
