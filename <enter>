@@ -1,5 +1,4 @@
 " Note: Skip initialization for vim-tiny or vim-small.
-" 
 if 0 | endif
 
 if &compatible
@@ -29,8 +28,6 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'xuyuanp/nerdtree-git-plugin'
 NeoBundle 'mhinz/vim-startify'
 NeoBundle 'hecal3/vim-leader-guide'
-NeoBundle 'vim-scripts/SingleCompile'
-'
 " My Bundles here:
 "
 " Refer to |:NeoBundle-examples|.
@@ -78,44 +75,25 @@ set foldmethod=indent
 set foldlevel=99
 
 
+map <leader>n :NERDTreeTabsToggle<enter>
+map <leader>t :TagbarToggle<enter>
 "Quick Exits
+map <leader>q :q!<enter>
+map <leader>s :w!<enter>
 "SCCompile
+nmap <C-F9> :SCCompile<cr>
+nmap <C-F10> :SCCompileRun<cr>"
 
 " Define prefix dictionary
 let g:lmap =  {}
-map <leader>q :q!<enter>
-let g:lmap.q = ['q', 'Quit']
-map <leader>s :w!<enter>
-let g:lmap.s = ['s', 'Save']
-nmap <leader>a :wq!<enter>
+nmap <leader>a :wq!<enter
 let g:lmap.a = ['wq!', 'Save and quit']
-nmap <leader>p :SCCompile<cr>
-let g:lmap.p = ['SCCompile', 'Compile']
-nmap <leader>o = :SCCompileRun<cr>
-let g:lmap.o = ['SCCompileRun', 'Run']
-nmap <leader>gs :Gstatus<cr>
-nmap <leader>gp :Gpull<cr>
-nmap <leader>gu :Gpush<cr>
-nmap <leader>gc :Gcommit<cr>
-let g:lmap.g = {
-		\'name' : 'Git Menu',
-		\'s' : ['Gstatus', 'Git Status'],
-                \'p' : ['Gpull',   'Git Pull'],
-                \'u' : ['Gpush',   'Git Push'],
-                \'c' : ['Gcommit', 'Git Commit'],
-                \'w' : ['Gwrite',  'Git Write'],
-                \}
-
-map <leader>n :NERDTreeTabsToggle<enter>
-map <leader>t :TagbarToggle<enter>
-let g:lmap.w = {
-		\'name' : 'Windows',
-		\'n' : ['NERDTreeToggle', 'Toggle Nerd Tree'],
-                \'t' : ['TagbarToggle',   'Toggle Tagbar'],
-                \}
 " Define some descriptions
+let g:lmap.c.c = ['call feedkeys("\<Plug>NERDCommenterComment")','Comment']
+let g:lmap.c[' '] = ['call feedkeys("\<Plug>NERDCommenterToggle")','Toggle']
 " The Descriptions for other mappings defined by NerdCommenter, will default
 " to their respective commands.
+"
 call leaderGuide#register_prefix_descriptions("<Space>", "g:lmap")
 nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
 vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
