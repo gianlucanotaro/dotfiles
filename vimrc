@@ -30,6 +30,9 @@ NeoBundle 'xuyuanp/nerdtree-git-plugin'
 NeoBundle 'mhinz/vim-startify'
 NeoBundle 'hecal3/vim-leader-guide'
 NeoBundle 'vim-scripts/SingleCompile'
+NeoBundle 'Shougo/deoplete.nvim'
+NeoBundle 'zchee/deoplete-clang'
+NeoBundle 'SirVer/ultisnips'
 '
 " My Bundles here:
 "
@@ -51,6 +54,13 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+" deoplete + neosnippet + autopairs
+let g:AutoPairsMapCR=0
+let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+inoremap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"
 
 "split navigations
 nnoremap <C-J> <C-W><C-J>
@@ -59,12 +69,12 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 "Move lines
-nnoremap <c-i> :m .+1<CR>==
-nnoremap <c-o> :m .-2<CR>==
-inoremap <c-i> <Esc>:m .+1<CR>==gi
-inoremap <c-o> <Esc>:m .-2<CR>==gi
-vnoremap <c-i> :m '>+1<CR>gv=gv
-vnoremap <c-o> :m '<-2<CR>gv=gv
+nnoremap <a-j> :m .+1<CR>==
+nnoremap <a-k> :m .-2<CR>==
+inoremap <a-j> <Esc>:m .+1<CR>==gi
+inoremap <a-k> <Esc>:m .-2<CR>==gi
+vnoremap <a-j> :m '>+1<CR>gv=gv
+vnoremap <a-k> :m '<-2<CR>gv=gv
 
 
 "Move Tabs arround
