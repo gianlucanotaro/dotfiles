@@ -33,6 +33,7 @@ NeoBundle 'vim-scripts/SingleCompile'
 NeoBundle 'Shougo/deoplete.nvim'
 NeoBundle 'zchee/deoplete-clang'
 NeoBundle 'SirVer/ultisnips'
+NeoBundle 'Plugin honza/vim-snippets'
 '
 " My Bundles here:
 "
@@ -50,6 +51,7 @@ NeoBundleCheck
 syntax on
 let mapleader = " "
 set number relativenumber
+set completeopt=menu,noinsert
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
