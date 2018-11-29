@@ -163,12 +163,13 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 for_window [class="^.*"] border pixel 1
-gaps inner 15 
-gaps outer 15
+gaps inner 10
+gaps outer 10
+bindsym $mod+Shift+Ctrl+Alt+a exec firefox
 exec feh --bg-scale ~/wall.png
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-exec succade
+exec polybar example
 exec setxkbmap eu
 
 # scratchpad s
@@ -188,5 +189,5 @@ bindsym F5 exec --no-startup-id amixer -q sset Master 3%+
 bindsym F6 exec --no-startup-id light -U 10
 bindsym F7 exec --no-startup-id light -A 10
 bindsym F8 gaps inner current set 0; gaps outer current set 0
-bindsym F9 gaps inner current set 15; gaps outer current set 15
+bindsym F9 gaps inner current set 10; gaps outer current set 10
 bindsym $mod+b exec --no-startup-id ~/dotfiles/i3/lock.sh

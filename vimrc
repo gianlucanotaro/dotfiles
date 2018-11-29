@@ -18,10 +18,10 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'christoomey/vim-tmux-navigator'
 NeoBundle 'jeffkreeftmeijer/vim-numbertoggle'
-NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'jistr/vim-nerdtree-tabs'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'majutsushi/tagbar'
+NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'mkitt/tabline.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'scrooloose/syntastic'
@@ -33,17 +33,21 @@ NeoBundle 'vim-scripts/SingleCompile'
 NeoBundle 'Shougo/deoplete.nvim'
 NeoBundle 'zchee/deoplete-clang'
 NeoBundle 'SirVer/ultisnips'
-NeoBundle 'Plugin honza/vim-snippets'
-'
+NeoBundle 'mbbill/undotree'
+NeoBundle 'junegunn/gv.vim'
+NeoBundle 'Yggdroot/indentLine'
+NeoBundle 'dracula/vim'
+NeoBundle 'arcticicestudio/nord-vim'
 " My Bundles here:
 "
 " Refer to |:NeoBundle-examples|.
 " Note: You don't set neobundle setting in .gvimrc!
 
 call neobundle#end()
+syntax on
+color dracula
 
 " Required:
-filetype plugin indent on
 
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
@@ -57,20 +61,21 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " deoplete + neosnippet + autopairs
-let g:AutoPairsMapCR=0
+let g:AutoPairsMapCR=1
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
+let g:AutoPairsFlyMode = 1
 imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 inoremap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"
-
-filetype plugin indent on
+let g:typndentLine_char = 'c'
 " show existing tab with 4 spaces width
 set tabstop=4
 " when indenting with '>', use 4 spaces width
 set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
+let g:indentLine_enabled = 1
 
 "split navigations
 nnoremap <C-J> <C-W><C-J>
@@ -93,6 +98,7 @@ nnoremap <C-Right> :tabnext<CR>
 nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 
+"Brackets autocompletion
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
@@ -118,24 +124,26 @@ nmap <leader>gp :Gpull<cr>
 nmap <leader>gu :Gpush<cr>
 nmap <leader>gc :Gcommit<cr>
 let g:lmap.g = {
-		\'name' : 'Git Menu',
-		\'s' : ['Gstatus', 'Git Status'],
-                \'p' : ['Gpull',   'Git Pull'],
-                \'u' : ['Gpush',   'Git Push'],
-                \'c' : ['Gcommit', 'Git Commit'],
-                \'w' : ['Gwrite',  'Git Write'],
+	    \'name' : 'Git Menu',
+	        \'s' : ['Gstatus', 'Git Status'],
+            \'p' : ['Gpull',   'Git Pull'],
+            \'u' : ['Gpush',   'Git Push'],
+            \'c' : ['Gcommit', 'Git Commit'],
+            \'w' : ['Gwrite',  'Git Write'],
                 \}
 
-map <leader>n :NERDTreeTabsToggle<enter>
-map <leader>t :TagbarToggle<enter>
+map <leader>wu :UndotreeToggle<enter>
 let g:lmap.w = {
-		\'name' : 'Windows',
-		\'n' : ['NERDTreeToggle', 'Toggle Nerd Tree'],
-                \'t' : ['TagbarToggle',   'Toggle Tagbar'],
+        \'name' : 'Windows',
+            \'n' : ['NERDTreeToggle', 'Toggle Nerd Tree'],
+            \'t' : ['TagbarToggle',   'Toggle Tagbar'],
+            \'u' : ['UndotreeToggle', 'Toggle Undotree'],
                 \}
+
 " Define some descriptions
 " The Descriptions for other mappings defined by NerdCommenter, will default
 " to their respective commands.
 call leaderGuide#register_prefix_descriptions("<Space>", "g:lmap")
 nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
 vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
+
