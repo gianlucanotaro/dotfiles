@@ -18,6 +18,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'christoomey/vim-tmux-navigator'
 NeoBundle 'jeffkreeftmeijer/vim-numbertoggle'
+NeoBundle 'jreybert/vimagit'
 NeoBundle 'jistr/vim-nerdtree-tabs'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'majutsushi/tagbar'
@@ -38,6 +39,7 @@ NeoBundle 'junegunn/gv.vim'
 NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'dracula/vim'
 NeoBundle 'arcticicestudio/nord-vim'
+NeoBundle 'junegunn/goyo.vim'
 " My Bundles here:
 "
 " Refer to |:NeoBundle-examples|.
@@ -48,7 +50,6 @@ syntax on
 color dracula
 
 " Required:
-
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
 NeoBundleCheck
@@ -64,11 +65,11 @@ let g:syntastic_check_on_wq = 0
 let g:AutoPairsMapCR=1
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
-let g:AutoPairsFlyMode = 1
+let g:AutoPairsFlyMode = 0
 imap <expr><TAB> pumvisible() ? "\<C-n>" : neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
-inoremap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"
 let g:typndentLine_char = 'c'
+inoremap <expr><CR> pumvisible() ? deoplete#mappings#close_popup() : "\<CR>"
 " show existing tab with 4 spaces width
 set tabstop=4
 " when indenting with '>', use 4 spaces width
@@ -94,8 +95,7 @@ vnoremap <a-k> :m '<-2<CR>gv=gv
 
 "Move Tabs arround
 nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
-nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
+nnoremap <C-Right> :tabnext<CR> nnoremap <silent> <A-Left> :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <A-Right> :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 
 "Brackets autocompletion
@@ -113,23 +113,20 @@ map <leader>q :q!<enter>
 let g:lmap.q = ['q', 'Quit']
 map <leader>s :w!<enter>
 let g:lmap.s = ['s', 'Save']
+nmap <leader>f :Goyo<CR>
+let g:lmap.f = ['m', 'Toggle Goyo mode']
 nmap <leader>a :wq!<enter>
 let g:lmap.a = ['wq!', 'Save and quit']
 nmap <leader>p :SCCompile<cr>
 let g:lmap.p = ['SCCompile', 'Compile']
 nmap <leader>o = :SCCompileRun<cr>
 let g:lmap.o = ['SCCompileRun', 'Run']
-nmap <leader>gs :Gstatus<cr>
-nmap <leader>gp :Gpull<cr>
-nmap <leader>gu :Gpush<cr>
-nmap <leader>gc :Gcommit<cr>
+nmap <leader>go :MagitOnly<cr>
+nmap <leader>gg :Magit<cr>
 let g:lmap.g = {
-	    \'name' : 'Git Menu',
-	        \'s' : ['Gstatus', 'Git Status'],
-            \'p' : ['Gpull',   'Git Pull'],
-            \'u' : ['Gpush',   'Git Push'],
-            \'c' : ['Gcommit', 'Git Commit'],
-            \'w' : ['Gwrite',  'Git Write'],
+	    \'name' : 'Git',
+	        \'o' : ['MagitOnly', 'Magit Only'],
+	        \'g' : ['Magit', 'Magit',] 
                 \}
 
 map <leader>wu :UndotreeToggle<enter>
@@ -146,4 +143,3 @@ let g:lmap.w = {
 call leaderGuide#register_prefix_descriptions("<Space>", "g:lmap")
 nnoremap <silent> <leader> :<c-u>LeaderGuide '<Space>'<CR>
 vnoremap <silent> <leader> :<c-u>LeaderGuideVisual '<Space>'<CR>
-
