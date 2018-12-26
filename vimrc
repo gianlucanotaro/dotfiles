@@ -40,15 +40,14 @@ NeoBundle 'Yggdroot/indentLine'
 NeoBundle 'dracula/vim'
 NeoBundle 'arcticicestudio/nord-vim'
 NeoBundle 'junegunn/goyo.vim'
+NeoBundle 'altercation/vim-colors-solarized'
 " My Bundles here:
 "
 " Refer to |:NeoBundle-examples|.
 " Note: You don't set neobundle setting in .gvimrc!
 
 call neobundle#end()
-syntax on
-color dracula
-
+syntax enable
 " Required:
 " If there are uninstalled bundles found on startup,
 " this will conveniently prompt you to install them.
