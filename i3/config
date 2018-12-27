@@ -128,7 +128,7 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 0
 gaps inner 10
 gaps outer 10
 bindsym $mod+Shift+Ctrl+Alt+a exec firefox
