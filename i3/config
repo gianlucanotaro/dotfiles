@@ -133,7 +133,7 @@ gaps inner 10
 gaps outer 10
 bindsym $mod+Shift+Ctrl+Alt+a exec firefox
 exec feh --bg-scale ~/wall.png
-exec polybar example
+exec polybar uptop
 exec setxkbmap eu
 
 # scratchpad s
