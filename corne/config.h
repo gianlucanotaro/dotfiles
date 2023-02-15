@@ -1,1 +1,8 @@
-config.h
+#pragma once
+
+#define COMBO_COUNT 10
+#define TAPPING_TERM 300
+#define AUTO_SHIFT_TIMEOUT_PER_KEY = 500
+#define TAPPING_TERM_PER_KEY
+#define OLED_TIMEOUT 120000
+#define OLED_BRIGHTNESS 120
